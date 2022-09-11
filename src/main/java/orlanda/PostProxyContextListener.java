@@ -6,8 +6,11 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import orlanda.annotations.PostProxy;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PostProxyContextListener implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
@@ -15,11 +18,11 @@ public class PostProxyContextListener implements ApplicationListener<ContextRefr
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        System.out.println("HI");
-        System.out.println(beanFactory == null);
         ApplicationContext context = event.getApplicationContext();
         String[] beanNames = context.getBeanDefinitionNames();
         for (String beanName : beanNames) {
+            // достаем beanDefinition, чтобы из него вытащить className оригинального класса,
+            // ведь это третья фаза и тут уже может прийти прокси
             BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanName);
             String className = beanDefinition.getBeanClassName();
 

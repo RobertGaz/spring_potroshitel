@@ -1,7 +1,8 @@
-package orlanda;
+package orlanda.postprocessors;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import orlanda.annotations.Profiling;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

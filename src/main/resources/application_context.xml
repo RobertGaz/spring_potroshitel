@@ -10,8 +10,10 @@
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
     <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
 
-<bean class="orlanda.InjectRandomIntAnnotationBeanPostProcessor"/>
-<bean class="orlanda.ProfilingAnnotationBeanPostProcessor"/>
+<!--    <bean class="orlanda.postprocessors.ReplaceWithAnnotationBeanFactoryPostProcessor"/>-->
+
+<bean class="orlanda.postprocessors.InjectRandomIntAnnotationBeanPostProcessor"/>
+<bean class="orlanda.postprocessors.ProfilingAnnotationBeanPostProcessor"/>
 <bean class="orlanda.PostProxyContextListener"/>
 
 <bean class="orlanda.Cat"/>

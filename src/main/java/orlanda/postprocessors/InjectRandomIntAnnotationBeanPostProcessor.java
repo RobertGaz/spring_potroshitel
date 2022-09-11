@@ -1,8 +1,9 @@
-package orlanda;
+package orlanda.postprocessors;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
+import orlanda.annotations.InjectRandomInt;
 
 import java.lang.reflect.Field;
 import java.util.Random;
@@ -18,7 +19,7 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
                 Random random = new Random();
                 int val = min + random.nextInt(max-min);
                 field.setAccessible(true);
-//                field.set(val);
+//                field.set(bean, val); нужно оборачивать в try/catch
                 ReflectionUtils.setField(field, bean, val);
             }
         }

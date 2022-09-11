@@ -8,7 +8,6 @@ public class Main {
         Animal bean = context.getBean(Animal.class);
 
         bean.sayHello();
-
         context.close();
     }
 }
